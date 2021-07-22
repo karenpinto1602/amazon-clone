@@ -8,8 +8,9 @@ function Header() {
     return (
         <div className="header">
             <img className="header-logo" 
-                src="http://pngimg.com/uploads/amazon/amazon_PNG11.png">                    
-            </img>
+                src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+                alt=""
+            />
 
             <div className="header-search">
                 <input className="header-searchInput"
