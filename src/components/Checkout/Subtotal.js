@@ -7,6 +7,15 @@ function Subtotal() {
 
     const [{basket}] = useStateValue();
 
+    const getBasketTotal = (basket) => {
+        var price = 0;
+        basket.map((data) => {
+            price = price + data.price;
+        })
+        console.log("from here: ",basket);
+        return price;
+    };
+
     return (
         <div className="subtotal">
             <CurrencyFormat
@@ -14,7 +23,7 @@ function Subtotal() {
                     <>
                         <p>
                             Subtotal ({basket.length} items):
-                            <strong>0</strong>
+                            <strong>{value}</strong>
                         </p>
                         <small className="subtotal-gift">
                             <input type="checkbox" /> 
@@ -23,10 +32,10 @@ function Subtotal() {
                     </>
                 )}
                 decimalScale = {2}
-                value='0' //{getBasketTotal(basket)}
+                value={getBasketTotal(basket)}
                 displayType={"text"}
                 thousandSeperator={true}
-                prefix={"Rs "}
+                prefix={" Rs "}
             >
             </CurrencyFormat>
             <button>Procees to Checkout</button>
