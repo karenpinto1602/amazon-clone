@@ -65,4 +65,5 @@
     align-items: center;
     align-self: flex-start;
     margin: -3px 5px auto -5px;
+    border-bottom: none;
 }
