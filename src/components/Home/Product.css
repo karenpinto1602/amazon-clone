@@ -35,4 +35,9 @@
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+    outline: invert;
+}
+.product-button:hover{
+    background-color: #111;
+    color: #f0c14b;
 }
