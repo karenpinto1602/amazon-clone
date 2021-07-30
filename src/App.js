@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './components/Home/Home';
 import Checkout from './components/Checkout/Checkout';
 import Login from './components/Auth/Login';
+import Payment from './components/Payment/Payment';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { auth } from './firebase';
@@ -11,7 +12,7 @@ import { useStateValue } from './components/Checkout/StateProvider';
 
 function App() {
 
-  const [{},dispatch] = useStateValue();
+  const [,dispatch] = useStateValue();
   
   useEffect(() => {
     //will run only once when the app component loads...  
@@ -31,7 +32,7 @@ function App() {
         })
       }
     })
-  }, [])
+  }, []) 
 
   return (
     //Using BEM convention
@@ -39,15 +40,21 @@ function App() {
       <div className="app">        
         <Switch>    
           <Route path="/login" exact component={Login} />             
+          
           <Route path="/checkout" >
             <Header />
             <Checkout />
-          </Route>            
+          </Route>  
+
+          <Route path="/payment" >
+            <Header />
+            <Payment />
+          </Route>
+
           <Route path="/">
             <Header />
             <Home />
-          </Route>   
-                          
+          </Route>                           
         </Switch>   
       </div>
     </Router>

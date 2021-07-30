@@ -11,6 +11,11 @@ function Header() {
 
     const [{basket,user}] = useStateValue();
 
+    let emailhead = "";
+    if(user){
+        var index = (user?.email).indexOf('@');
+        emailhead = (user.email).substring(0,index);
+    }
     const  handleAuthentication = () => {
         if(user){
             auth.signOut();
@@ -36,7 +41,7 @@ function Header() {
                 <Link to={!user && "/login"} style={{textDecoration: 'none', color: 'white'}}>
                     <div className="header-option" onClick={handleAuthentication}>
                         <span className="header-option-line1">
-                            Hello Guest
+                            {user ? "Hello "+emailhead : 'Hello Guest' }
                         </span>
                         <span className="header-option-line2">
                             {user ? 'Sign Out' : 'Sign In'}                            

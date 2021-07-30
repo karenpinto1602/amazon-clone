@@ -1,16 +1,16 @@
 .checkoutProduct{
     display: flex;
     background-color: white;
-    width: 60%;
+    width: 90%;
     padding: 2% 5%;
 }
 .checkoutProduct-image{
-    min-width: 200px;
-    width: 200px;
-    max-height: 250px;
+    min-width: 150px;
+    max-width: 150px;
+    max-height: 150px;
     padding-right: 30px;
-    object-fit:fill;
-    margin: 0 auto;
+    object-fit: contain;
+    margin: 0;
 }
 .checkoutProduct-rating{
     display: flex;
@@ -29,6 +29,6 @@
 }
 @media screen and (max-width: 700px) {
     .checkoutProduct{
-        width: 80%;
+        width: 90%;
     }
 }
