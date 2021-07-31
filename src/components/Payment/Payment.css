@@ -20,12 +20,13 @@
 .payment-title{
     flex: 0.2;
 }
-.payment-address{
+.payment-address, .payment-details{
     flex: 0.8;
 }
 .payment-items{
     flex: 0.9;
     margin-left: -3%;
 }
+
 
 
