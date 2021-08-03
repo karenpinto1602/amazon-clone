@@ -26,6 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:app": "react-scripts build",
+    "build:functions": "yarn --cwd functions install",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
