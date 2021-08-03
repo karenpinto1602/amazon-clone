@@ -25,9 +25,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm-run-all build:*",
     "build:app": "react-scripts build",
-    "build:functions": "yarn --cwd functions install",
+    "build:functions": "node ./zipIt.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
