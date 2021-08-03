@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Checkout from './components/Checkout/Checkout';
 import Login from './components/Auth/Login';
 import Payment from './components/Payment/Payment';
+import Orders from './components/Payment/Orders';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { auth } from './firebase';
@@ -36,7 +37,7 @@ function App() {
         })
       }
     })
-  }, []) 
+  }, [dispatch]) 
 
   return (
     //Using BEM convention
@@ -55,6 +56,11 @@ function App() {
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+          </Route>
+
+          <Route path="/orders" >
+            <Header />
+            <Orders />
           </Route>
 
           <Route path="/">

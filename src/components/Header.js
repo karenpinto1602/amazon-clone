@@ -48,14 +48,16 @@ function Header() {
                         </span>
                     </div>
                 </Link>
-                <div className="header-option">
-                    <span className="header-option-line1">
-                        Returns
-                    </span>
-                    <span className="header-option-line2">
-                        & Orders
-                    </span>
-                </div>
+                <Link to='/orders' style={{textDecoration: 'none', color: 'white'}}>
+                    <div className="header-option">
+                        <span className="header-option-line1">
+                            Returns
+                        </span>
+                        <span className="header-option-line2">
+                            & Orders
+                        </span>
+                    </div>
+                </Link>
                 <div className="header-option">
                     <span className="header-option-line1">
                         Your

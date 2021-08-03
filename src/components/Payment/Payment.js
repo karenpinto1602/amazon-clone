@@ -5,12 +5,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { getBasketTotal } from '../../reducer';
 import CheckoutProduct from '../Checkout/CheckoutProduct';
 import { useStateValue } from '../Checkout/StateProvider';
+import { db } from './../../firebase';
 import axios from './../../axios';
 import './Payment.css';
 
 
 function Payment() {
-    const [{basket,user}] = useStateValue();
+    const [{basket,user},dispatch] = useStateValue();
     const history = useHistory();
     const [error,setError] = useState(null);
     const [disable,setDisable] = useState(true);
@@ -32,6 +33,7 @@ function Payment() {
     }, [basket]);
 
     console.log('THE SECRET IS : ',clientSecret);
+    console.log(user?.uid);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -39,16 +41,31 @@ function Payment() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setProcessing(true);
-        const payload = await stripe.confirmCardPayment(clientSecret, {
+        await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
             }
         }).then(({paymentIntent}) => {
             //paymentIntent = payment confirmation
+            //This is using NOSQL Data structure
+            db
+             .collection('users')
+             .doc(user?.uid)
+             .collection('orders')
+             .doc(paymentIntent.id)
+             .set({
+                 basket: basket,
+                 amount: paymentIntent.amount,
+                 created: paymentIntent.created
+             });
 
             setSucceeded(true);
             setError(null);
             setProcessing(false);
+
+            dispatch({
+                type: 'EMPTY_BASKET',                
+            })
 
             history.replace('./orders');
         })
